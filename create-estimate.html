@@ -1,0 +1,307 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::after,
+      *::before {
+        margin: 0;
+        padding: 0;
+        box-sizing: inherit;
+      }
+
+      html {
+        font-size: 62.5%;
+      }
+
+      body {
+        box-sizing: border-box;
+      }
+
+      header {
+        display: grid;
+        grid-template-columns: max-content 1fr max-content;
+        justify-content: center;
+        align-items: center;
+        height: 10rem;
+        width: 100%;
+        box-shadow: 0px 4px 2px rgba(0, 0, 0, 0.1);
+        /* background-color: #f8f9fa; */
+      }
+      header .cancel {
+        width: 10rem;
+        height: 100%;
+        border: none;
+        background-color: white;
+        border-right: 0.2rem solid #c4c4c4;
+        color: #c4c4c4;
+        font-size: 3.5rem;
+        font-family: "Ubuntu", sans-serif;
+      }
+      header h1 {
+        text-align: center;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 3rem;
+      }
+      .next {
+        width: 30rem;
+        height: 10rem;
+        border: none;
+        background: rgba(196, 196, 196, 0.4);
+        color: white;
+        font-size: 2.8rem;
+        font-family: "Ubuntu", sans-serif;
+        text-transform: uppercase;
+        font-weight: 700;
+
+        transition: all 200ms ease-in-out;
+      }
+
+      .body-next {
+        display: block;
+        margin: 5rem auto;
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 7rem;
+      }
+      main .container {
+        width: 70%;
+      }
+      main .container h1 {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 5rem;
+        margin-bottom: 5rem;
+      }
+      main .container .projects {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8%;
+      }
+      .project-item {
+        padding: 3rem;
+        border: 0.1rem solid #999999;
+        height: 40rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        transition: all 200ms ease-in-out;
+      }
+      .project-item.active {
+        border: 5px solid #0abab5;
+      }
+      .project-item h3 {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 3rem;
+      }
+      .project-item p {
+        margin-top: -10rem;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 2rem;
+        color: #999999;
+      }
+      .project-item select,
+      .project-item input {
+        width: 100%;
+        padding: 1.5rem;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 2rem;
+
+        color: rgba(145, 145, 145, 0.5);
+      }
+      .disable-project {
+        border-color: rgba(153, 153, 153, 0.5);
+      }
+      .disable-project h3,
+      .disable-project p,
+      .disable-project select,
+      .disable-project input {
+        color: rgba(153, 153, 153, 0.5);
+      }
+      .btn-active {
+        background: #0abab5;
+      }
+
+      /* Media Queries */
+      @media screen and (max-width: 1300px) {
+        .body-next {
+          margin: 8rem auto;
+        }
+        main .container {
+          width: 80%;
+        }
+        main .container h1 {
+          font-size: 4rem;
+          text-align: center;
+        }
+        main .container .projects {
+          width: 100%;
+          display: grid;
+          gap: 8%;
+        }
+        header {
+          height: 6rem;
+        }
+        header .next {
+          height: 6rem;
+          width: 15rem;
+          font-size: 3rem;
+        }
+      }
+      @media screen and (max-width: 900px) {
+        main .container .projects {
+          width: 70%;
+          grid-template-columns: 1fr;
+          grid-template-rows: 1fr 1fr;
+          margin: 0 auto;
+        }
+      }
+      @media screen and (max-width: 660px) {
+        main .container {
+          width: 95%;
+        }
+      }
+    </style>
+    <title>Lancer - Estimate</title>
+  </head>
+  <body>
+    <header>
+      <button class="cancel">X</button>
+      <h1>Create Estimate</h1>
+      <button class="next">Next</button>
+    </header>
+
+    <main>
+      <div class="container">
+        <h1>What project are you estimating?</h1>
+
+        <div class="projects">
+          <div class="project-old project-item">
+            <!-- To create the disable style in the case of abscence of old projects, add 'disable-project' to the classes of this element and add the 'disabled' property to the 'select' element -->
+
+            <h3>A previously created project</h3>
+            <p>
+              Find estimate for previously created project. By doing so the
+              estimate get populated with some of the data
+            </p>
+            <select name="old-project">
+              <option value="" selected disabled>Select Project</option>
+              <option value="random">Random</option>
+              <option value="mercedes">Mercedes</option>
+              <option value="audi">Audi</option>
+            </select>
+          </div>
+          <div class="project-new project-item">
+            <h3>A new project</h3>
+            <p>
+              Create a new estimate and set up a new project based on the
+              information.
+            </p>
+            <input
+              name="new-project"
+              type="text"
+              placeholder="Project Name"
+              required
+            />
+          </div>
+        </div>
+        <button class="next body-next">Next</button>
+      </div>
+    </main>
+
+    <script>
+      let nextButtons = Array.from(document.querySelectorAll(".next"));
+      let newProjectPanel = document.querySelector(".project-new");
+      let oldProjectPanel = document.querySelector(".project-old");
+      let newInput = document.querySelector("input[name='new-project']");
+      let oldInput = document.querySelector("select[name='old-project']");
+
+      newInput.addEventListener("focus", e => {
+        nextButtons.map(button => {
+          if (!button.classList.contains("btn-active")) {
+            button.classList.add("btn-active");
+          }
+        });
+        if (oldProjectPanel.classList.contains("active")) {
+          oldProjectPanel.classList.remove("active");
+        }
+        newProjectPanel.classList.add("active");
+      });
+      newInput.addEventListener("blur", e => {
+        nextButtons.map(button => {
+          if (button.classList.contains("btn-active")) {
+            button.classList.remove("btn-active");
+          }
+          if (oldProjectPanel.classList.contains("active")) {
+            oldProjectPanel.classList.remove("active");
+          }
+          newProjectPanel.classList.remove("active");
+        });
+      });
+
+      oldInput.addEventListener("mouseenter", e => {
+        nextButtons.map(button => {
+          if (!button.classList.contains("btn-active")) {
+            button.classList.add("btn-active");
+          }
+        });
+        if (newInput === document.activeElement) {
+          oldInput.addEventListener("click", e => {
+            newInput.blur();
+            oldProjectPanel.classList.add("active");
+          });
+        } else {
+          oldProjectPanel.classList.add("active");
+        }
+
+        document.addEventListener("click", e => {
+          if (
+            e.target !== oldProjectPanel &&
+            e.target !== newProjectPanel &&
+            e.target.parentElement !== oldProjectPanel &&
+            e.target.parentElement !== newProjectPanel
+          ) {
+            console.log("none");
+            nextButtons.map(button => {
+              if (button.classList.contains("btn-active")) {
+                button.classList.remove("btn-active");
+              }
+              oldProjectPanel.classList.remove("active");
+            });
+          }
+        });
+      });
+      // oldInput.addEventListener("blur", e => {
+      //   nextButtons.map(button => {
+      //     if (button.classList.contains("btn-active")) {
+      //       button.classList.remove("btn-active");
+      //     }
+      //     oldProjectPanel.classList.remove("active");
+      //   });
+      // });
+    </script>
+  </body>
+</html>
